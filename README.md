@@ -8,8 +8,6 @@ Crerty에서 사용하던 Material 스킨의 openNAMU 호환 버전입니다.
 
 ## 사용하기
 * 다운받은 폴더의 이름을 Material로 바꿔서 views 폴더에 넣어주세요.
-* 네비게이션 바의 색상은 background-color를 수정하여 변경할 수 있습니다.
-* 스크롤 버튼의 색상을 번경하려면 SVG 파일 내 fill을 수정하면 됩니다.
 
 ## 라이선스
 Copyright 2020 bunubbv
