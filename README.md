@@ -2,17 +2,17 @@
 ## Material
 Material Skin for openNAMU. (Based on [MDB](https://mdbootstrap.com))
 
-Crerty에서 사용하던 Material의 openNAMU 호환 버전입니다. 개발이 중단되었으며 일부 기능이 작동하지 않습니다.
+Crerty에서 사용하던 Material 스킨의 openNAMU 호환 버전입니다.
+
+개발이 중단되었습니다. 최신 openNAMU와 호환되지 않습니다.
 
 ## 사용하기
- * 다운받은 후 폴더의 이름을 Material로 바꿔서 views 폴더에 넣어주세요.
- * 스킨 수정은 하단의 openNAMU, Material 링크를 제외하면 자유롭게 가능합니다.
- * 스킨의 대표 색상 변경 방법은 다음과 같습니다.
-     * 네비게이션 바의 색상은 background-color를 수정하시면 됩니다.
-     * 상, 하단 이동 버튼은 SVG 파일 내 fill 부분을 수정하면 됩니다.
+* 다운받은 폴더의 이름을 Material로 바꿔서 views 폴더에 넣어주세요.
+* 네비게이션 바의 색상은 background-color를 수정하여 변경할 수 있습니다.
+* 스크롤 버튼의 색상을 번경하려면 SVG 파일 내 fill을 수정하면 됩니다.
 
 ## 라이선스
-Copyright 2023 bunubbv
+Copyright 2020 bunubbv
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
