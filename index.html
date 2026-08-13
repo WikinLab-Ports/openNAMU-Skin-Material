@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>{{imp[0]}}{% if imp[3][0] != 0 %}{{ imp[3][0] }}{% endif %} - {{imp[1][0]}}</title>
-		{{imp[3][3]|safe}}
+		<title>{{title}}{% if sub_title != 0 %}{{ sub_title }}{% endif %} - {{wiki_name}}</title>
+		{{main_head|safe}}
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -12,17 +12,17 @@
 		<link href="/views/Material/css/style.css?ver=5" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
-		{{imp[1][5]|safe}}
-		{{imp[2][3]|safe}}
-		<meta name="title" content="{{imp[0]}} - {{imp[1][0]}}">
-		<meta name="keywords" content="{{imp[1][0]}}">
+		{{global_head|safe}}
+		{{user_head|safe}}
+		<meta name="title" content="{{title}} - {{wiki_name}}">
+		<meta name="keywords" content="{{wiki_name}}">
 		<meta name="description" content="{{data|cut_100}}">
 		<meta property="og:type" content="website"> 
-		<meta property="og:title" content="{{imp[0]}} - {{imp[1][0]}}">
+		<meta property="og:title" content="{{title}} - {{wiki_name}}">
 		<meta property="og:description" content="{{data|cut_100}}">
-		<meta name="twitter:creator" content="@{{imp[1][0]}}">
-		<meta name="twitter:title" content="{{imp[0]}}">
-		<meta name="twitter:site" content="@{{imp[1][0]}}">
+		<meta name="twitter:creator" content="@{{wiki_name}}">
+		<meta name="twitter:title" content="{{title}}">
+		<meta name="twitter:site" content="@{{wiki_name}}">
 		<meta name="twitter:card" content="summary">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
@@ -31,7 +31,7 @@
 			<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="background-color: gray">
 				<div class="container">
 					<a href="/" id="logo">
-						<strong>{{imp[1][4]|safe}}</strong>
+						<strong>{{wiki_logo|safe}}</strong>
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -59,27 +59,27 @@
 									<a href="/admin_log" title="권한 사용 목록" class="dropdown-item">권한 사용 목록</a>
 									<a href="/old_page" title="오래된 문서" class="dropdown-item">오래된 문서</a>
 									<a href="/upload" title="파일 올리기" class="dropdown-item">파일 올리기</a>
-									{% if imp[2][9] != '0' %}
+									{% if user_auth != '0' %}
 										<a class="dropdown-item" href="/manager">관리 도구</a>
 									{% endif %}
 								</div>
 							</li>
-							{% if imp[2][2] != 1 %}
+							{% if user_login != 1 %}
 								<span class="nav-item" id="nologinmobile">
 							{% else %}
 								<span class="nav-item" id="loginmobile">
 							{% endif %}
-								{% if imp[2][2] != 1 %}
+								{% if user_login != 1 %}
 								&nbsp;
 								<span class="dropdown">
 									<a href="#" id="usermenuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32px" height="32px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="usermenuDropdown">
-										<a class="dropdown-item" href="/user">{{imp[2][10]}}</a>
+										<a class="dropdown-item" href="/user">{{user_ip}}</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="/record/{{imp[2][10]}}">편집 기록</a>
-										<a class="dropdown-item" href="/topic_record/{{imp[2][10]}}">토론 기록</a>
+										<a class="dropdown-item" href="/record/{{user_ip}}">편집 기록</a>
+										<a class="dropdown-item" href="/topic_record/{{user_ip}}">토론 기록</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="/register">계정 만들기</a>
 										<a class="dropdown-item" href="/login">로그인</a>
@@ -90,13 +90,13 @@
 								&nbsp;
 								<span class="dropdown">
 									<a href="#" id="usermenuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									  <img class="profile-img" src="//secure.gravatar.com/avatar/{{imp[2][4]|md5_replace}}?d=retro">
+									  <img class="profile-img" src="//secure.gravatar.com/avatar/{{user_email|md5_replace}}?d=retro">
 									</a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="usermenuDropdown">
-										<a class="dropdown-item" href="/w/user:{{imp[2][5]}}">{{imp[2][5]}}</a>
+										<a class="dropdown-item" href="/w/user:{{user_name}}">{{user_name}}</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="/record/{{imp[2][5]}}">편집 기록</a>
-										<a class="dropdown-item" href="/topic_record/{{imp[2][5]}}">토론 기록</a>
+										<a class="dropdown-item" href="/record/{{user_name}}">편집 기록</a>
+										<a class="dropdown-item" href="/topic_record/{{user_name}}">토론 기록</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="/user">내 정보</a>
 										<a class="dropdown-item" href="/logout">로그아웃</a>
@@ -117,22 +117,22 @@
 								<span class="icon is-small is-left"></span>
 							</form>
 						</ul>
-						{% if imp[2][2] != 1 %}
+						{% if user_login != 1 %}
 							<span class="nav-item" id="nologinusermenu">
 						{% else %}
 							<span class="nav-item" id="loginusermenu">
 						{% endif %}
-							{% if imp[2][2] != 1 %}
+							{% if user_login != 1 %}
 							&nbsp;
 							<span class="dropdown">
 								<a href="#" id="usermenuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32px" height="32px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="usermenuDropdown">
-									<a class="dropdown-item" href="/user">{{imp[2][10]}}</a>
+									<a class="dropdown-item" href="/user">{{user_ip}}</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="/record/{{imp[2][10]}}">편집 기록</a>
-									<a class="dropdown-item" href="/topic_record/{{imp[2][10]}}">토론 기록</a>
+									<a class="dropdown-item" href="/record/{{user_ip}}">편집 기록</a>
+									<a class="dropdown-item" href="/topic_record/{{user_ip}}">토론 기록</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/register">계정 만들기</a>
 									<a class="dropdown-item" href="/login">로그인</a>
@@ -143,13 +143,13 @@
 							&nbsp;
 							<span class="dropdown">
 								<a href="#" id="usermenuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  <img class="profile-img" src="//secure.gravatar.com/avatar/{{imp[2][4]|md5_replace}}?d=retro">
+								  <img class="profile-img" src="//secure.gravatar.com/avatar/{{user_email|md5_replace}}?d=retro">
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="usermenuDropdown">
-									<a class="dropdown-item" href="/w/user:{{imp[2][5]}}">{{imp[2][5]}}</a>
+									<a class="dropdown-item" href="/w/user:{{user_name}}">{{user_name}}</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="/record/{{imp[2][5]}}">편집 기록</a>
-									<a class="dropdown-item" href="/topic_record/{{imp[2][5]}}">토론 기록</a>
+									<a class="dropdown-item" href="/record/{{user_name}}">편집 기록</a>
+									<a class="dropdown-item" href="/topic_record/{{user_name}}">토론 기록</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/user">내 정보</a>
 									<a class="dropdown-item" href="/logout">로그아웃</a>
@@ -168,15 +168,15 @@
 						<div class="col-md-8 mb-4">
 							<div class="card mb-4 wow fadeIn">
 								<div class="card-header">
-									<a style="color: unset;" href="/w/{{imp[0]}}">{{imp[0]}}</a>
-									{% if imp[3][0] != 0 %}
-										{{imp[3][0]}}
+									<a style="color: unset;" href="/w/{{title}}">{{title}}</a>
+									{% if sub_title != 0 %}
+										{{sub_title}}
 									{% endif %}
 									{% if menu != 0 %}
 										<span style="float: right;">
 										{% for sub_d in menu %}
 											<a href="/{{sub_d[0]}}">{{sub_d[1]}}</a>
-											{% if menu[loop.index] %}
+											{% if menu[forloop.Counter] %}
 												|
 											{% endif %}
 										{% endfor %}
@@ -187,7 +187,7 @@
 									{{data|safe}}
 								</div>
 								<div class="card-header" id="bottom">
-									{{imp[1][1]|safe}}
+									{{license|safe}}
 									<div style="margin-top: 10px">
 										<a href="https://github.com/2DU/openNAMU">
 											<img src="/views/main_css/file/s_logo.png" width="100px">
